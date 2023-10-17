@@ -1,0 +1,55 @@
+<main class="grid p-7">
+  <div class="col-12">
+    <h1 class="text-5xl text-center text-white">Football League Updates</h1>
+  </div>
+
+  <div class="col-12">
+    <p-tabView id="tab-view-home" (activeIndexChange)="onChangeTab($event)">
+      <ng-container *ngFor="let item of tabItems; trackBy: trackById">
+        <p-tabPanel
+          [header]="item.country"
+          [id]="item.id"
+          [selected]="item.selected"
+        >
+          <div class="card">
+            <p-table
+              [value]="teams"
+              [columns]="tabColumns"
+              [loading]="loading$ | async"
+              [rowHover]="true"
+              [tableStyle]="{ 'min-width': '50rem' }"
+            >
+              <ng-template pTemplate="header" let-columns>
+                <tr>
+                  <th *ngFor="let col of columns; index as i">
+                    {{ col.header }}
+                  </th>
+                </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-value>
+                <tr (click)="redirect(value.team)" class="cursor-pointer">
+                  <td>{{ value.rank }}</td>
+                  <td>
+                    <img
+                      [src]="value.team.logo"
+                      alt=""
+                      height="50"
+                      width="50"
+                    />
+                  </td>
+                  <td>{{ value.team.name }}</td>
+                  <td>{{ value.all.played }}</td>
+                  <td>{{ value.all.win }}</td>
+                  <td>{{ value.all.lose }}</td>
+                  <td>{{ value.all.draw }}</td>
+                  <td>{{ value.goalsDiff }}</td>
+                  <td>{{ value.points }}</td>
+                </tr>
+              </ng-template>
+            </p-table>
+          </div>
+        </p-tabPanel>
+      </ng-container>
+    </p-tabView>
+  </div>
+</main>

@@ -1,0 +1,17 @@
+/* Add application styles & imports to this file! */
+@import 'primeng/resources/themes/vela-green/theme.css';
+@import 'primeng/resources/primeng.css';
+@import 'primeicons/primeicons.css';
+body {
+  font-family: 'Roboto', sans-serif !important;
+  background: url('./assets/images/bg-home.jpg') no-repeat;
+  background-size: cover;
+  overflow-x: hidden;
+}
+
+.p-tabview-nav {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px !important;
+  border: none !important;
+}

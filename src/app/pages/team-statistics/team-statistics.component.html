@@ -1,0 +1,28 @@
+<section class="grid p-7">
+  <div class="col-12">
+    <p-table
+      [value]="scoreboard"
+      [tableStyle]="{ 'min-width': '50rem' }"
+      [loading]="loading$ | async"
+    >
+      <ng-template pTemplate="body" let-value>
+        <tr>
+          <td>
+            <img [src]="value.teams.away.logo" alt="" height="50" width="50" />
+          </td>
+          <td>{{ value.teams.away.name }}</td>
+          <td>{{ value.goals.away }}</td>
+          <td>-</td>
+          <td>{{ value.goals.home }}</td>
+          <td>{{ value.teams.home.name }}</td>
+          <td>
+            <img [src]="value.teams.home.logo" alt="" height="50" width="50" />
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  <div class="col-12">
+    <p-button label="Back" (onClick)="backPage()"></p-button>
+  </div>
+</section>
